@@ -1,0 +1,14 @@
+div {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    color: white;
+    font-size: 3rem;
+}
+
+#inner-countdown-div {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+
+}
