@@ -1,8 +1,7 @@
 <div>
-    <div id="inner-countdown-div">
-        <countdown #countdown [config]="{ leftTime: 1800, format: 'mm:ss', demand: false }" (event)="handleEvent($event)"></countdown>
-        <!-- <p>
-            {{countdown.left}}
-        </p> -->
+    <div id="inner-countdown-div" class="py-4">
+        <p class="m-0">
+            {{minutesLeft}}:{{secondsLeft}}
+        </p>
     </div>
 </div>

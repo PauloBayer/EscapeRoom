@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 export class InputBoxComponent {
 
   placeholder: string = "Digite aqui o nome de um objeto no cenário para interagir com ele e pressione ENTER...";
+  value = '';
 
 }

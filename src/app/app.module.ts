@@ -13,6 +13,11 @@ import { EvidenciasComponent } from './components/evidencias/evidencias.componen
 import { InputBoxComponent } from './components/input-box/input-box.component';
 import { TimerComponent } from './components/timer/timer.component';
 import { CountdownModule } from 'ngx-countdown';
+import { HelpButtonComponent } from './components/help-button/help-button.component';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { ItemModalComponent } from './components/item-modal/item-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -24,13 +29,18 @@ import { CountdownModule } from 'ngx-countdown';
     BackgroundGameComponent,
     EvidenciasComponent,
     InputBoxComponent,
-    TimerComponent
+    TimerComponent,
+    HelpButtonComponent,
+    ItemModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CountdownModule
+    CountdownModule,
+    MatIconModule,
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
