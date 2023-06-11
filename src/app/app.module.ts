@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { ItemModalComponent } from './components/item-modal/item-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     CountdownModule,
     MatIconModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
