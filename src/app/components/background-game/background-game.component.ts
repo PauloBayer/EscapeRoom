@@ -18,13 +18,19 @@ interface modalText {
   styleUrls: ['./background-game.component.css'],
 })
 export class BackgroundGameComponent implements OnInit {
+  // Construtor
   constructor(
     public dialog: MatDialog,
     private passwordService: PasswordService
   ) {
-    this.password = this.passwordService.getPassword();
+    this.passwordService
+      .getPasswordObservable()
+      .subscribe((password: string) => {
+        this.password = password;
+      });
   }
 
+  // Declarando todas as variáveis que iremos usar
   modalText?: modalText;
   atelieActive = false;
   exposicaoActive = true;
@@ -34,14 +40,21 @@ export class BackgroundGameComponent implements OnInit {
   atelieLocked = true;
   lavagemLocked = true;
   vipLocked = true;
-  password = 'teste';
-
-  printPass() {
-    console.log(this.password);
-  }
-
+  password = '';
   startTime = false;
+  gameOver = false;
+  exitLocked = true;
+  evidence1 = false;
+  evidence2 = false;
+  evidence3 = false;
+  evidence4 = false;
+  evidence5 = false;
+  evidence6 = false;
+  allEvidences = false;
+  timeLeft: number = 1802;
+  runTime: any;
 
+  // Variável de lista de objetos
   itens: string[] = [
     'sair',
     'porta',
@@ -109,14 +122,19 @@ export class BackgroundGameComponent implements OnInit {
     'estatuas',
     'estatueta',
     'estatuetas',
+    'vaso',
+    'plantas',
+    'planta',
   ];
 
   @Input() handleEvent($event: CountdownEvent): void {
-    var timeLeft = $event.left;
+    this.timeLeft = $event.left;
   }
 
+  // Interagindo através do teclado
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
+    // Abre inventário ou anda pelas salas
     if (event.keyCode == KEY_CODE.DOWN_ARROW) {
       console.log(event);
       if (this.lavagemActive) {
@@ -129,9 +147,11 @@ export class BackgroundGameComponent implements OnInit {
           this.evidenciasActive = false;
         }
       }
+
+      // Navega pelas salas ou interage com o modal de senhas
     } else if (event.keyCode == KEY_CODE.UP_ARROW) {
       console.log(event);
-      if (this.atelieActive) {
+      if (this.atelieActive && !this.vipLocked) {
         this.atelieActive = false;
         this.lavagemActive = true;
       } else if (this.exposicaoActive) {
@@ -143,7 +163,21 @@ export class BackgroundGameComponent implements OnInit {
             `,
         };
         this.openDialog(modalText);
+      } else if (this.atelieActive && this.vipLocked) {
+        let modalText: modalText = {
+          imgUrl: '../assets/itens/senha_atelie.png',
+          dialogTitle: 'Porta da sala VIP trancada',
+          dialogInnerText: `
+            Esta porta está bloqueada com uma senha numérica de <strong>quatro</strong> digítos.
+            <br>Ao lado do painel de senha, está uma anotação:
+            <br><strong>"O ano de nascimento de minha obra favorita, ainda na revista"</strong>
+            `,
+          hasInput: true,
+        };
+        this.openDialog(modalText);
       }
+
+      // Navega pelas salas
     } else if (event.keyCode == KEY_CODE.RIGHT_ARROW) {
       console.log(event);
       if (this.atelieActive) {
@@ -153,8 +187,11 @@ export class BackgroundGameComponent implements OnInit {
         this.vipActive = false;
         this.atelieActive = true;
       }
+
+      // Navega pelas salas e interage com o modal de senha
     } else if (event.keyCode == KEY_CODE.LEFT_ARROW) {
-      if (this.atelieActive) {
+      console.log(event);
+      if (this.atelieActive && !this.lavagemLocked) {
         this.atelieActive = false;
         this.vipActive = true;
       } else if (this.exposicaoActive && !this.atelieLocked) {
@@ -172,10 +209,22 @@ export class BackgroundGameComponent implements OnInit {
             `,
           hasInput: true,
         };
-        this.openDialog(modalText)
-          .afterClosed()
-          .subscribe((result) => {});
+        this.openDialog(modalText);
+      } else if (this.atelieActive && this.lavagemLocked) {
+        console.log(this.atelieActive, this.lavagemLocked);
+        let modalText: modalText = {
+          imgUrl: '../assets/itens/senha_atelie.png',
+          dialogTitle: 'Porta da lavagem trancada',
+          dialogInnerText: `
+            A sala está bloqueada com uma senha. Acima do dispositivo eletrônico, está uma anotação:
+            <br><strong>"Minha deusa da beleza favorita. A mais bela de todas."</strong>
+            `,
+          hasInput: true,
+        };
+        this.openDialog(modalText);
       }
+
+      // Dá o input de interação do objeto
     } else if (event.keyCode == KEY_CODE.ENTER) {
       if (
         (<HTMLInputElement>document.getElementById('inputBox')).value !== ''
@@ -191,11 +240,84 @@ export class BackgroundGameComponent implements OnInit {
     }
   }
 
+  // Função que checa o que foi digitado no input, para abrir um modal de interação
   activateItem(item: string) {
     let encontrouItem = this.itens.includes(item);
 
     if (encontrouItem) {
       console.log('Item encontrado: ' + item);
+
+      // Se for uma evidência ou o jogador quiser sair, faz essa checagem
+      if (item == 'sair') {
+        console.log('Você quer sair');
+      }
+
+      if (item == 'tapete') {
+        this.evidence1 = true;
+      }
+
+      if (item == 'pincel' || item == 'pinceis' || item == 'pincéis') {
+        this.evidence2 = true;
+      }
+
+      if (item == 'roupa' || item == 'roupas') {
+        this.evidence3 = true;
+      }
+
+      if (item == 'lixo' || item == 'lixeira') {
+        this.evidence4 = true;
+      }
+
+      if (item == 'frasco' || item == 'frascos') {
+        this.evidence5 = true;
+      }
+
+      if (item == 'varal') {
+        this.evidence6 = true;
+      }
+
+      if (
+        this.evidence1 &&
+        this.evidence2 &&
+        this.evidence3 &&
+        this.evidence4 &&
+        this.evidence5 &&
+        this.evidence6
+      ) {
+        this.allEvidences = true;
+      }
+
+      if (this.allEvidences) {
+        var modalText: modalText = {
+          dialogTitle: 'Todas as evidências foram encontradas',
+          dialogInnerText: `Parabéns! Você acredita que encontrou evidências suficientes para ir embora.
+          <br>Agora, resta apenas a senha para sair pela porta da frente.
+          <br>Digite <strong>sair</strong> na caixa de ação para tentar sair.
+          <br>Você imagina que a senha está relacionada ao sangue extraído das vítimas do assassino.
+          <br>O sangue que é usado para pintar essas telas macabras.
+          `,
+        };
+
+        this.openDialog(modalText);
+      }
+
+      if (item == 'porta' || item == 'sair') {
+        let modalText: modalText = {
+          imgUrl: '../assets/itens/senha_atelie.png',
+          dialogTitle: 'A porta de saída',
+          dialogInnerText: `
+            <em><strong>Pensamento:</strong> Posso tentar sair a qualquer instante, mas qual teria sido o objetivo de ter entrado?
+            <br>Antes de sair, devo encontrar todas as pistas.</em>
+            <br>Além disso, há uma senha para ser digitada em um dispositivo eletrônico.
+            <br>A senha aparenta ser uma palavra de cinco letras. Uma anotação colada na parede diz:
+            <br><strong>"A essência da beleza, responsável pela perfeição que corre nos corpos de indivíduos dignos de serem resgatados do tempo."</strong>
+            `,
+          hasInput: true,
+        };
+        this.openDialog(modalText);
+      }
+
+      // Se não encontrou o item digitado, abre um modal de erro
     } else {
       console.log('Item não encontrado: ' + item);
       var modalText: modalText = {
@@ -210,7 +332,9 @@ export class BackgroundGameComponent implements OnInit {
     }
   }
 
+  // Funções que são iniciadas quando o jogo começa
   ngOnInit(): void {
+    // Abre o tutorial
     var modalText: modalText = {
       dialogTitle: 'Tutorial',
       dialogInnerText: `
@@ -230,6 +354,8 @@ export class BackgroundGameComponent implements OnInit {
         </ul>
         `,
     };
+
+    // Segundo tutorial
     this.openDialog(modalText)
       .afterClosed()
       .subscribe((result) => {
@@ -242,14 +368,35 @@ export class BackgroundGameComponent implements OnInit {
           <br>Boa sorte!
           `,
         };
+
+        // Inicia o timer
         this.openDialog(modalText)
           .afterClosed()
           .subscribe((result) => {
             this.startTime = true;
           });
       });
+
+    // Contagem paralela do timer, para verificar se o jogo deve acabar
+    setInterval(() => {
+      if (this.startTime) {
+        this.timeLeft -= 1;
+
+        if (this.timeLeft == 0) {
+          this.gameOver = true;
+        }
+
+        if (this.gameOver) {
+          this.atelieActive = false;
+          this.exposicaoActive = false;
+          this.vipActive = false;
+          this.lavagemActive = false;
+        }
+      }
+    }, 1000);
   }
 
+  // Função que abre o modal de interação
   openDialog(modalText: modalText) {
     const dialogRef = this.dialog.open(ItemModalComponent, {
       data: {
@@ -262,8 +409,24 @@ export class BackgroundGameComponent implements OnInit {
       },
     });
 
+    // Checa se a senha digitada está correta
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      console.log(this.password);
+      if (this.password == 'beleza') {
+        this.atelieLocked = false;
+      }
+
+      if (this.password == 'oxum') {
+        this.lavagemLocked = false;
+      }
+
+      if (this.password == '1890') {
+        this.vipLocked = false;
+      }
+
+      if (this.password == 'vitae') {
+        this.exitLocked = false;
+      }
     });
     return dialogRef;
   }
@@ -271,6 +434,7 @@ export class BackgroundGameComponent implements OnInit {
   // Fim do componente
 }
 
+// Enum para facilitar a leitura do teclado
 export enum KEY_CODE {
   UP_ARROW = 38,
   DOWN_ARROW = 40,

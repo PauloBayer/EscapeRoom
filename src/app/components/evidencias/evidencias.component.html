@@ -1,25 +1,47 @@
 <div class="w-100 scenario">
-    <span>
-        Evidências
-    </span>
-    <div class="row d-flex">
-        <div class="col">
-            <img class="evidence-img" src="../../../assets/itens/banana.png" alt="n deu">
-        </div>
-        <div class="col">
-            <img class="evidence-img" src="../../../assets/itens/banana.png" alt="">
-        </div>
-        <div class="col">
-            <img class="evidence-img" src="../../../assets/itens/banana.png" alt="">
-        </div>
-        <div class="col">
-            <img class="evidence-img" src="../../../assets/itens/banana.png" alt="">
-        </div>
-        <div class="col">
-            <img class="evidence-img" src="../../../assets/itens/banana.png" alt="">
-        </div>
-        <div class="col">
-            <img class="evidence-img" src="../../../assets/itens/banana.png" alt="">
-        </div>
+  <span> Evidências </span>
+  <div class="row d-flex">
+    <div class="col" *ngIf="evidence1">
+      <img
+        class="evidence-img"
+        src="../../../assets/itens/banana.png"
+        alt="Tapete com sangue"
+      />
     </div>
+    <div class="col" *ngIf="evidence2">
+      <img
+        class="evidence-img"
+        src="../../../assets/itens/banana.png"
+        alt="Pincel com sangue"
+      />
+    </div>
+    <div class="col" *ngIf="evidence3">
+      <img
+        class="evidence-img"
+        src="../../../assets/itens/banana.png"
+        alt="Roupas das vítimas"
+      />
+    </div>
+    <div class="col" *ngIf="evidence4">
+      <img
+        class="evidence-img"
+        src="../../../assets/itens/banana.png"
+        alt="Papel-filme com sangue"
+      />
+    </div>
+    <div class="col" *ngIf="evidence5">
+      <img
+        class="evidence-img"
+        src="../../../assets/itens/banana.png"
+        alt="Frasco de sangue"
+      />
+    </div>
+    <div class="col" *ngIf="evidence6">
+      <img
+        class="evidence-img"
+        src="../../../assets/itens/banana.png"
+        alt="Retratos das vítimas"
+      />
+    </div>
+  </div>
 </div>

@@ -1,18 +1,23 @@
 <div>
-    <h1 mat-dialog-title>{{data.title}}</h1>
-    <div [innerHtml]="data.innerText" mat-dialog-content class="text-wrap">
+  <h1 mat-dialog-title>{{ data.title }}</h1>
+  <div [innerHtml]="data.innerText" mat-dialog-content class="text-wrap"></div>
+  <div class="big-box w-100 h-75">
+    <img [src]="data.imgUrl" alt="" />
+  </div>
+  <div *ngIf="data.hasInput">
+    <mat-form-field class="w-100 px-3">
+      <mat-label>{{ labelInput }}</mat-label>
+      <input matInput type="text" [(ngModel)]="inputText" class="w-100" />
+    </mat-form-field>
+    <div class="w-100 px-3">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="enterPassword()"
+        class="w-100 mb-3"
+      >
+        Abrir
+      </button>
     </div>
-    <div class="big-box w-100 h-100">
-        <img [src]="data.imgUrl" alt="">
-    </div>
-    <div *ngIf="data.hasInput">
-        <mat-form-field class="w-100 px-3">
-            <mat-label>{{labelInput}}</mat-label>
-            <input matInput type="text" [(ngModel)]="inputText" class="w-100">
-        </mat-form-field>
-        <div class="w-100 px-3">
-            <button mat-raised-button color="primary" (click)="enterPassword()"
-            class="w-100">Abrir</button>
-        </div>
-    </div>
+  </div>
 </div>

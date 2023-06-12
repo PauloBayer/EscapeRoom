@@ -1,0 +1,14 @@
+* {
+  color: white;
+}
+
+.main-div {
+  background-color: black;
+  vertical-align: middle;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sec-div {
+  margin: auto;
+}

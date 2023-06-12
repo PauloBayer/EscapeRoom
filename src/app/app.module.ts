@@ -20,6 +20,7 @@ import { ItemModalComponent } from './components/item-modal/item-modal.component
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { GameoverComponent } from './components/gameover/gameover.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     InputBoxComponent,
     TimerComponent,
     HelpButtonComponent,
-    ItemModalComponent
+    ItemModalComponent,
+    GameoverComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +46,9 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatDialogModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
