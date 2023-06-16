@@ -65,6 +65,8 @@ export class BackgroundGameComponent implements OnInit {
     'tapete',
     'armário',
     'armários',
+    'armario',
+    'armarios',
     'estante',
     'estantes',
     'pincel',
@@ -91,6 +93,7 @@ export class BackgroundGameComponent implements OnInit {
     'torneiras',
     'papel',
     'papeis',
+    'papéis',
     'caderno',
     'cadernos',
     'baú',
@@ -245,12 +248,8 @@ export class BackgroundGameComponent implements OnInit {
     let encontrouItem = this.itens.includes(item);
 
     if (encontrouItem) {
-      console.log('Item encontrado: ' + item);
 
       // Se for uma evidência ou o jogador quiser sair, faz essa checagem
-      if (item == 'sair') {
-        console.log('Você quer sair');
-      }
 
       if (item == 'tapete') {
         this.evidence1 = true;
@@ -317,6 +316,368 @@ export class BackgroundGameComponent implements OnInit {
         this.openDialog(modalText);
       }
 
+      if (item == 'jornal' || item == 'jornais') {
+        let modalText: modalText = {
+          imgUrl: '../assets/itens/jornal.png',
+          dialogTitle: 'MANCHETE: Modelo desaparece',
+          dialogInnerText: `
+            <em><strong>Pensamento:</strong>Pessoas bonitas... sempre foi o padrão.</em>
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'tapete') {
+        let modalText: modalText = {
+          imgUrl: '../assets/itens/tapete.png',
+          dialogTitle: 'Tapete',
+          dialogInnerText: `
+            Uma mancha de sangue se encontra no canto do tapete.
+            <br>Será que pertence a alguma vítima ou o pintor se acidentou?
+            <br><em><strong>Pensamento:</strong>Foto tirada. Evidência adicionada.</em>
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'armário' || item == 'armario' || item == 'armários' || item == 'armarios' || item == 'livro' || item == 'livros') {
+        let modalText: modalText = {
+          dialogTitle: 'Armário de livros',
+          dialogInnerText: `
+            Existem diversos livros de mitologias diferentes.
+            <br><ul>
+            <li>Deuses da mitologia grega</li>
+            <li>Deuses da cultura eslava</li>
+            <li>Dentre outros</li>
+            <br>Porém, <strong>acima de todos</strong>, está um livro em detaque: "Deuses da beleza de matrizes africanas".
+            <br><em><strong>Pensamento:</strong>Isso pode ser importante, mas vou perder muito tempo se tiver que ler esses livros.
+            <br>Uma busca na internet deve tornar tudo muito mais rápido.</em>
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'estante' || item == 'estantes') {
+        let modalText: modalText = {
+          dialogTitle: 'Estante',
+          dialogInnerText: `
+            Uma estante repleta de livros.
+            <br>Estranhamente, todos pertencem ao Oscar Wilde.
+            <br>É como se o suspeito tivesse lido algo dele e se inspirado de tal forma que acabou adquirindo a obra completa.
+            <br><em><strong>Pensamento:</strong>Isso pode ser importante, mas vou perder muito tempo se tiver que ler esses livros.
+            <br>Conhecer isso sobre o assassino pode me ajudar em algo.</em>
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'palheta') {
+        let modalText: modalText = {
+          dialogTitle: 'Palheta',
+          dialogInnerText: `
+          Uma palheta de madeira, já sem tinta.
+          <br>Ela apresenta algumas lascas e rachaduras em alguns pontos.
+          <br>Quase como se tivesse sido usada como arma de contusão em alguém.
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'pincel' || item == 'pincéis' || item == 'pinceis') {
+        let modalText: modalText = {
+          dialogTitle: 'Pincel',
+          dialogInnerText: `
+            Um pincel usado com tinta vermelha, estranhamente pegajosa e seca.
+            <br><em><strong>Pensamento:</strong>Isso é tinta... certo? Evidência coletada.</em>
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'cavalete') {
+        let modalText: modalText = {
+          dialogTitle: 'cavalete',
+          dialogInnerText: `
+          Um cavalete comum. Firme. Robusto. Nada além disso.
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'tela' || item == 'telas') {
+        let modalText: modalText = {
+          dialogTitle: 'Tela',
+          dialogInnerText: `
+          O esboço do retrato de um homem, sendo preparado para pintura.
+          <br>Estranhamente, é muito similar à última vítima que desapareceu, um YouTuber de moda.
+            `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'quadro' || item == 'quadros') {
+        let modalText: modalText = {
+          dialogTitle: 'Quadro',
+          imgUrl: '../assets/itens/quadro.png',
+          dialogInnerText: `
+          Pendurado na parede, está o quadro <em>"Metamorfose de Narciso"</em>.
+          <br>Provavelmente uma réplica de Salvador Dalí.
+          <br>É o único quadro pendurado nessa sala, no ateliê de um pintor.
+          <br>Abaixo, está uma anotação colada à parede:
+          <br><strong><em>"Não podendo admirar e transmitir a imensidão de minha própria beleza, sou condenado a procurar por resquícios dela em outros."</em></strong>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'tanque') {
+        let modalText: modalText = {
+          dialogTitle: 'Tanque',
+          dialogInnerText: `
+          Um tanque de lavagem de telas.
+          <br>Está completamente avermelhado próximo ao ralo.  
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'toalha' || item == 'toalhas') {
+        let modalText: modalText = {
+          dialogTitle: 'Toalhas',
+          dialogInnerText: `
+          Apesar de haver toalhas penduradas para secagem, outras estão enroladas como se fossem... mordaças.
+          <br>Você não sabe se está projetando sua vontade de incriminar o suspeito ou se é apenas uma extrema coincidência.
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'faca' || item == 'facas') {
+        let modalText: modalText = {
+          dialogTitle: 'Faca',
+          dialogInnerText: `
+          Uma faca de cozinha sobre o balcão.
+          <br>Seu fio está extremamente afiado.
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'roupa' || item == 'roupas') {
+        let modalText: modalText = {
+          dialogTitle: 'Roupas',
+          dialogInnerText: `
+          Há uma série de roupas jogadas por todos os lados.
+          <br>Uma análise mais minuciosa revela que elas são dos mais variados tamanhos, incluindo roupas femininas e masculinas.
+          <br>Todas estão lavadas e secas.
+          <br><em><strong>Pensamento:</strong>Aposto que devem pertencer à vítimas.
+          <br>Não tenho como levar todas, então é melhor fotografar.
+          <br>Foto tirada. Evidência coletada.</em>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'lixo' || item == 'lixeira') {
+        let modalText: modalText = {
+          dialogTitle: 'Lixeira',
+          dialogInnerText: `
+          Dentro da lixeira há um amontoado enorme de papel-filme jogado fora.
+          <br>Você vascula nele e descobre que está embebedado em sangue seco.
+          <br>Se sua hipótese estiver correta, é o material usado pelo assassino para impedir sujeira excessiva de sangue nos móveis e no aposento.
+          <br><em><strong>Pensamento:</strong>Foto tirada. Evidência coletada.</em>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'torneira' || item == 'torneiras') {
+        let modalText: modalText = {
+          dialogTitle: 'Torneira',
+          dialogInnerText: `
+          Uma torneira de água comum. Abaixo, há alguns copos.
+          <br>Será que é o único jeito de se conseguir beber água nesse lugar?
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'papel' || item == 'papeis' || item == 'papéis') {
+        let modalText: modalText = {
+          dialogTitle: 'Papéis',
+          dialogInnerText: `
+          Uma série de papéis e rascunhos de frases, jogadas no chão.
+          <br>Você consegue ler alguns:
+          <br><br><h3><em>"Deve haver algum jeito... Eu preciso descobrir"</em></h3>
+          <br><h2><em>"Eu preciso, eu PRECISO preservar a beleza"</em></h2>
+          <br><h1><em>"Eu ODEIO que eles envelhecem, murcham e morrem"</em></h1>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'caderno' || item == 'cadernos') {
+        let modalText: modalText = {
+          dialogTitle: 'Caderno',
+          dialogInnerText: `
+          Um caderno de anotações do pintor.
+          <br>Você folheia as páginas, mas apenas algumas estão escritas:
+          <br><br>
+          <h3><em>"Eu quis preservar a beleza deles. Quis salvá-los do envelhecimento."</em></h3>
+          <br><h2><em>"Para isso, preciso preservá-los no tempo. Guardar sua iamgem. Salvar sua beleza."</em></h2>
+          <br><h1><em>"Essa é a intenção das minhas obras. Os meus retratos são meu manifesto contra o tempo."</em></h1>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'preteleira' || item == 'preteleiras') {
+        let modalText: modalText = {
+          dialogTitle: 'Prateleira',
+          dialogInnerText: `
+          Uma prateleira repleta de <strong>frascos</strong> de tintas.
+          <br>Todas estão nomeadas de acordo com a cor e o material com a qual foi feita.
+          <br>Será que esse pintor faz suas próprias tintas?
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'frasco' || item == 'frascos') {
+        let modalText: modalText = {
+          dialogTitle: 'Frasco',
+          dialogInnerText: `
+          Você pega um frasco em específico.
+          <br>Alguns possuem etiquetas como "Violeta. Feito com pétalas de Jasmine".
+          <br>Entretanto, seus olhos saltam quando você pega da prateleira um frasco rubro, nomeado apenas com uma única palavra:
+          <br><h1>Vitae</h1>
+          <br><em><strong>Pensamento:</strong> Eu preciso desse frasco. ELe pode ser minha saída desse lugar.
+          <br>Evidência coletada.</em>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'varal') {
+        let modalText: modalText = {
+          dialogTitle: 'Varal',
+          dialogInnerText: `
+          Um varal de secagem de pinturas.
+          <br>Há quadros aqui que parecem terem sido pintadas há muito tempo, e alguns mais recentes.
+          <br>Todos eles possuem uma coisa em comum: são retratos dos desaparecidos.
+          <br>Seu coração sobe à boca, há poucas coisas mais suspeitas que isso.
+          <br><em><strong>Pensamento:</strong> Vou tirar fotos de cada um desses retratos. Evidência coletada.</em>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'cesta' || item == 'caixa' || item == 'caixas') {
+        let modalText: modalText = {
+          dialogTitle: 'Cesta',
+          dialogInnerText: `
+          Jogados juntos, há 8 celulares amontoados, todos deslizados - talvez, sem bateria.
+          <br>Um número estranho para uma única pessoa possuir.
+          <br>Tudo indica que podem ser das vítimas.
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'janela' || item == 'janelas') {
+        let modalText: modalText = {
+          dialogTitle: 'Frasco',
+          dialogInnerText: `
+          Uma janela para ventilação comum.
+          <br>Porém, essa foi fechada definitivamente.
+          <br>O batente está fechado de tal forma que não é mais possível abri-lo sem quebrá-lo.
+          <br>Será que o pintor não gostaria que pessoas de fora pudessem ver seu trabalho?
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'câmera' || item == 'camera' || item == 'cameras' || item == 'câmeras') {
+        let modalText: modalText = {
+          dialogTitle: 'Câmera',
+          dialogInnerText: `
+          Uma câmera fotográfica quebrada, jogada em um canto.
+          <br>Parece que o artista tentou experimentar com fotografia antes das pinturas, mas não ficou satisfeito com o resultado.
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'cadeira' || item == 'cadeiras') {
+        let modalText: modalText = {
+          dialogTitle: 'Cadeira',
+          dialogInnerText: `
+          Uma cadeira virada dentro da sala. Parece robusta, muito difícil de ser quebrada.
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'corda' || item == 'cordas') {
+        let modalText: modalText = {
+          dialogTitle: 'Cordas',
+          dialogInnerText: `
+          Uma série de cordas firmes, entrelaçadas em diversos nós.
+          <br>Teriam sido usadas para imobilizar as vítimas?
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'estátua' || item == 'estátuas' || item == 'estatua' || item == 'estatuas') {
+        let modalText: modalText = {
+          dialogTitle: 'Estátua',
+          dialogInnerText: `
+          Uma bela escultura de duas pessoas se abraçando. Abaixo, está escrito:
+          <br><em>"Uma ode à beleza"</em>
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
+      if (item == 'vaso' || item == 'planta' || item == 'plantas') {
+        let modalText: modalText = {
+          dialogTitle: 'Planta',
+          dialogInnerText: `
+          No grande vaso, está uma Calla Lily, também conhecida como Copo-de-Leite.
+          <br>É uma flor conhecida por sua grandiosidade e beleza.
+          `,
+          hasInput: false,
+        };
+        this.openDialog(modalText);
+      }
+
       // Se não encontrou o item digitado, abre um modal de erro
     } else {
       console.log('Item não encontrado: ' + item);
@@ -324,7 +685,7 @@ export class BackgroundGameComponent implements OnInit {
         dialogTitle: 'Item não encontrado',
         dialogInnerText: `O item que você procura não está disponível.
         <br>Verifique se você escreveu corretamente e tente novamente.
-        <br>Ou, talvez, o nome para interagir com esse item seja diferente do que você está tentando.
+        <br>Ou, talvez, a palavra para interagir com esse item seja diferente do que você está tentando.
         `,
       };
 
