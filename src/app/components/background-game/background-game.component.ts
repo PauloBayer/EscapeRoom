@@ -154,7 +154,7 @@ export class BackgroundGameComponent implements OnInit {
       // Navega pelas salas ou interage com o modal de senhas
     } else if (event.keyCode == KEY_CODE.UP_ARROW) {
       console.log(event);
-      if (this.atelieActive && !this.vipLocked) {
+      if (this.atelieActive && !this.lavagemLocked) {
         this.atelieActive = false;
         this.lavagemActive = true;
       } else if (this.exposicaoActive) {
@@ -166,14 +166,13 @@ export class BackgroundGameComponent implements OnInit {
             `,
         };
         this.openDialog(modalText);
-      } else if (this.atelieActive && this.vipLocked) {
+      } else if (this.atelieActive && this.lavagemLocked) {
         let modalText: modalText = {
           imgUrl: '../assets/itens/senha_atelie.png',
-          dialogTitle: 'Porta da sala VIP trancada',
+          dialogTitle: 'Porta da lavagem trancada',
           dialogInnerText: `
-            Esta porta está bloqueada com uma senha numérica de <strong>quatro</strong> digítos.
-            <br>Ao lado do painel de senha, está uma anotação:
-            <br><strong>"O ano de nascimento de minha obra favorita, ainda na revista"</strong>
+              A sala está bloqueada com uma senha. Acima do dispositivo eletrônico, está uma anotação:
+              <br><strong>"Minha deusa da beleza favorita. A mais bela de todas."</strong>
             `,
           hasInput: true,
         };
@@ -194,7 +193,7 @@ export class BackgroundGameComponent implements OnInit {
       // Navega pelas salas e interage com o modal de senha
     } else if (event.keyCode == KEY_CODE.LEFT_ARROW) {
       console.log(event);
-      if (this.atelieActive && !this.lavagemLocked) {
+      if (this.atelieActive && !this.vipLocked) {
         this.atelieActive = false;
         this.vipActive = true;
       } else if (this.exposicaoActive && !this.atelieLocked) {
@@ -213,14 +212,14 @@ export class BackgroundGameComponent implements OnInit {
           hasInput: true,
         };
         this.openDialog(modalText);
-      } else if (this.atelieActive && this.lavagemLocked) {
-        console.log(this.atelieActive, this.lavagemLocked);
+      } else if (this.atelieActive && this.vipLocked) {
         let modalText: modalText = {
           imgUrl: '../assets/itens/senha_atelie.png',
-          dialogTitle: 'Porta da lavagem trancada',
+          dialogTitle: 'Porta VIP trancada',
           dialogInnerText: `
-            A sala está bloqueada com uma senha. Acima do dispositivo eletrônico, está uma anotação:
-            <br><strong>"Minha deusa da beleza favorita. A mais bela de todas."</strong>
+            Esta porta está bloqueada com uma senha numérica de <strong>quatro</strong> digítos.
+            <br>Ao lado do painel de senha, está uma anotação:
+            <br><strong>"O ano de nascimento de minha obra favorita, ainda na revista"</strong>
             `,
           hasInput: true,
         };
@@ -467,7 +466,7 @@ export class BackgroundGameComponent implements OnInit {
         let modalText: modalText = {
           dialogTitle: 'Faca',
           dialogInnerText: `
-          Uma faca de cozinha sobre o balcão.
+          Uma faca de cozinha.
           <br>Seu fio está extremamente afiado.
           `,
           hasInput: false,
