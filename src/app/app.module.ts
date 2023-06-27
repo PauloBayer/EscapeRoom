@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { GameoverComponent } from './components/gameover/gameover.component';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { GameoverComponent } from './components/gameover/gameover.component';
     HelpButtonComponent,
     ItemModalComponent,
     GameoverComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+.container-form{
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../assets/scenarios/capa.png);
+}
+.box-form{
+  position: absolute;
+  margin: 10% 35%;
+  padding: 2%;
+  width: 30%;
+  height: 50%;
+  border-radius: 15px;
+  background-color: rgb(211, 211, 211);
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+.form-group label{
+  font-weight: bold;
+  font-size: .9em;
+  margin-bottom: .4em;
+}
+.form-group input{
+  padding: 0.6em;
+  font-size: .8em;
+  border-radius: 10px;
+  border: none;
+}
+.form-group a {
+  cursor: pointer;
+}
+.form-button{
+  color: #ffffff;
+  background-color: #24a154;
+
+}
