@@ -444,7 +444,7 @@ export class BackgroundGameComponent implements OnInit {
           dialogTitle: 'Tanque',
           dialogInnerText: `
           Um tanque de lavagem de telas.
-          <br>Está completamente avermelhado próximo ao ralo.  
+          <br>Está completamente avermelhado próximo ao ralo.
           `,
           hasInput: false,
         };
