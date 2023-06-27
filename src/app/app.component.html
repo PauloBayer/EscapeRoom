@@ -1,1 +1,146 @@
-<app-background-game></app-background-game>
+<!-- <app-background-game></app-background-game> -->
+<div *ngIf="error">ERRO: {{ error | json}}</div>
+<div *ngIf="success">SUCESSO: {{ success | json }}</div>
+
+<div id="theList">
+    <h2>The list</h2>
+    <ul>
+        <li *ngFor="let item of jogadores">{{item.login}}</li>
+        <li *ngFor="let item of jogos">{{item.idJogador}}</li>
+        <li *ngFor="let item of ligas">{{item.nomeLiga}}</li>
+    </ul>
+</div>
+
+<div id="theUpdate">
+    <h2>Atualizar jogador</h2>
+  
+    <div class="container">
+      <div *ngFor="let item of jogadores;let i = index;" class="row">
+        <div class="col-4">
+          <input type="number"
+                 [(ngModel)]="jogadores[i].idLiga"
+                 class="form-control"
+                 required
+                 #idLiga="ngModel"
+                 [ngClass]="{ 'is-invalid': idLiga.touched && idLiga.invalid }">
+        </div>
+        <div class="col-4">
+          <input type="text"
+                 [(ngModel)]="jogadores[i].login"
+                 class="form-control"
+                 required
+                 #login="ngModel"
+                 [ngClass]="{ 'is-invalid': login.touched && login.invalid }">
+        </div>
+        <div class="col-4">
+            <input type="button"
+                   value="Update"
+                   class="btn btn-success btn-sm"
+                   [disabled]="idLiga.invalid || login.invalid"
+                   (click)="updateJogador(jogadores[i].idJogador, login, jogadores[i].senha, idLiga)">
+          </div>
+      </div>
+    </div>
+  </div>
+
+<!-- <div id="theJogador">
+
+    <h2>The Jogador</h2>
+    <form #f="ngForm" name="theJogador" (submit)="addJogador(f)">
+      <div class="form-group">
+        <label>Login</label>
+        <input type="text"
+              class="form-control"
+              name="Login"
+              [(ngModel)]="jogador.login"
+              #jogadorLogin="ngModel"
+              required
+              pattern="^[a-zA-Z ]+$">
+        <span class="help-block danger" *ngIf="jogadorLogin.errors?.['required'] && jogadorLogin.touched">
+          The login name is required
+        </span>
+        <span class="help-block danger" *ngIf="jogadorLogin.errors?.['pattern'] && jogadorLogin.touched">
+          The model name can only contain the letters a-z or A-Z
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password"
+              class="form-control"
+              name="password"
+              required
+              [(ngModel)]="jogador.senha"
+              #jogadorSenha="ngModel">
+        <span class="help-block danger" *ngIf="jogadorSenha.errors?.['required'] && jogadorSenha.touched">
+          The senha is required
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Liga</label>
+        <input type="number"
+              class="form-control"
+              name="idLiga"
+              [(ngModel)]="jogador.idLiga"
+              #jogadorSenha="ngModel">
+      </div>
+      <button
+          class="btn btn-primary btn-sm"
+          [disabled]="f.invalid">Add</button>
+    </form>
+</div>
+<div id="theLiga">
+    <h2>The Liga</h2>
+    <form #f="ngForm" name="theLiga" (submit)="addLiga(f)">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text"
+              class="form-control"
+              name="Login"
+              [(ngModel)]="liga.nomeLiga"
+              #nomeLiga="ngModel"
+              required
+              pattern="^[a-zA-Z ]+$">
+        <span class="help-block danger" *ngIf="nomeLiga.errors?.['required'] && nomeLiga.touched">
+          The name is required
+        </span>
+        <span class="help-block danger" *ngIf="nomeLiga.errors?.['pattern'] && nomeLiga.touched">
+          The model name can only contain the letters a-z or A-Z
+        </span>
+      </div>
+      <button
+          class="btn btn-primary btn-sm"
+          [disabled]="!liga.nomeLiga">Add</button>
+    </form>
+  </div>
+  <div id="theJogo">
+    <h2>The Jogo</h2>
+    <form #g="ngForm" name="theJogo" (submit)="addJogo(g)">
+      <div class="form-group">
+        <label>idJogador</label>
+        <input type="number"
+              class="form-control"
+              name="Login"
+              [(ngModel)]="jogo.idJogador"
+              #idJogadorLiga="ngModel"
+              required>
+        <span class="help-block danger" *ngIf="idJogadorLiga.errors?.['required'] && idJogadorLiga.touched">
+          The idJogador is required
+        </span>
+      </div>
+      <div class="form-group">
+        <label>pontos</label>
+        <input type="number"
+              class="form-control"
+              name="Login"
+              [(ngModel)]="jogo.pontos"
+              #pontosLiga="ngModel"
+              required>
+        <span class="help-block danger" *ngIf="pontosLiga.errors?.['required'] && pontosLiga.touched">
+          The pontos is required
+        </span>
+      </div>
+      <button
+          class="btn btn-primary btn-sm"
+          [disabled]="g.invalid">Add</button>
+    </form>
+  </div> -->
