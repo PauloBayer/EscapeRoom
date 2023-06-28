@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
   error = '';
   success = '';
   jogador: Jogador = { idJogador: Math.floor(Math.random() * 100000000), login: "", senha: "" };
-  checkLogin?: boolean;
+  checkLogin?: boolean = true;
   @Input() loggedIn!: boolean;
   @Output() loggedInChange = new EventEmitter<boolean>();
   @Input() loginUser!: string;
