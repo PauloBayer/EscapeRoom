@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { ItemModalComponent } from '../item-modal/item-modal.component';
 
@@ -36,6 +36,7 @@ export class HelpButtonComponent {
     </ul>
     `
   };
+  @Input() loginUser!: string;
 
   constructor(public dialog: MatDialog) { }
 

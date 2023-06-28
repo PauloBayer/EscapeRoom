@@ -5,6 +5,10 @@ div {
     color: white;
 }
 
+h4 {
+    margin-bottom: 0;
+}
+
 #icon-help {
     transform: scale(2);
 }
@@ -15,4 +19,11 @@ div {
     padding: 20px 20px 15px 20px;
     vertical-align: middle;
     cursor: pointer;
+}
+
+#login-div {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 100px !important;
+    padding: 20px;
 }

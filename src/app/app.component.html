@@ -1,5 +1,7 @@
-<!-- <app-background-game></app-background-game> -->
-<div *ngIf="error">ERRO: {{ error | json}}</div>
+<app-form *ngIf="!hasLoggedIn" [(loggedIn)]="hasLoggedIn" [(loginUser)]="loginUser" [(idUser)]="idUser"></app-form>
+<app-background-game *ngIf="hasLoggedIn" [loginUser]="loginUser"></app-background-game>
+
+<!-- <div *ngIf="error">ERRO: {{ error | json}}</div>
 <div *ngIf="success">SUCESSO: {{ success | json }}</div>
 
 <div id="theList">
@@ -41,7 +43,7 @@
           </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 <!-- <div id="theJogador">
 

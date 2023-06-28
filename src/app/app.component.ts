@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Jogo } from './interfaces/jogo';
 import { JogoService } from './jogo.service';
@@ -16,7 +16,8 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'escapeRoom';
-
+  loginUser = '';
+  idUser = 0;
   jogos: Jogo[] = [];
   ligas: Liga[] = [];
   jogadores: Jogador[] = [];
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   jogo: Jogo = { idJogo: Math.floor(Math.random() * 100000000), idLiga: undefined, idJogador: undefined, pontos: 0 };
   liga: Liga = { idLiga: Math.floor(Math.random() * 100000000), nomeLiga: '' };
   jogador: Jogador = { idJogador: Math.floor(Math.random() * 100000000), login: '', senha: '' };
+  hasLoggedIn = false;
 
   constructor(private jogoService: JogoService, 
               private ligaService: LigaService, 

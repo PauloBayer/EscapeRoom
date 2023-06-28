@@ -53,6 +53,7 @@ export class BackgroundGameComponent implements OnInit {
   allEvidences = false;
   timeLeft: number = 1802;
   runTime: any;
+  @Input() loginUser!: string;
 
   // Variável de lista de objetos
   itens: string[] = [
