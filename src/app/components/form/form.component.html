@@ -25,7 +25,7 @@
         </button>
         <a (click)="changeContent(cadastro)" class="blue-text mt-2">{{aText}}</a>
       </div>
-      <p *ngIf="!checkLogin">Login e/ou Senha não conferem</p>
+      <p *ngIf="!checkLogin" class="text-danger">Login e/ou Senha não conferem</p>
     </form>
   </div>
 </div>

@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   liga: Liga = { idLiga: Math.floor(Math.random() * 100000000), nomeLiga: '' };
   jogador: Jogador = { idJogador: Math.floor(Math.random() * 100000000), login: '', senha: '' };
   hasLoggedIn = false;
+  cutsceneOver = false;
 
   constructor(private jogoService: JogoService, 
               private ligaService: LigaService, 
