@@ -24,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { GameoverComponent } from './components/gameover/gameover.component';
 import { FormComponent } from './components/form/form.component';
 import { CutsceneIntroComponent } from './components/cutscene-intro/cutscene-intro.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CutsceneIntroComponent } from './components/cutscene-intro/cutscene-int
     GameoverComponent,
     FormComponent,
     CutsceneIntroComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
