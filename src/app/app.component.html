@@ -1,6 +1,8 @@
 <app-form *ngIf="!hasLoggedIn" [(loggedIn)]="hasLoggedIn" [(loginUser)]="loginUser" [(idUser)]="idUser"></app-form>
-<app-cutscene-intro *ngIf="hasLoggedIn && !cutsceneOver" [(cutsceneOver)]="cutsceneOver"></app-cutscene-intro>
-<app-background-game *ngIf="cutsceneOver" [loginUser]="loginUser"></app-background-game>
+<app-home *ngIf="hasLoggedIn"></app-home>
+<!--<app-cutscene-intro *ngIf="hasLoggedIn && !cutsceneOver" [(cutsceneOver)]="cutsceneOver"></app-cutscene-intro>
+<app-background-game *ngIf="cutsceneOver" [loginUser]="loginUser"></app-background-game>-->
+
 
 <!-- <div *ngIf="error">ERRO: {{ error | json}}</div>
 <div *ngIf="success">SUCESSO: {{ success | json }}</div>
@@ -16,7 +18,7 @@
 
 <div id="theUpdate">
     <h2>Atualizar jogador</h2>
-  
+
     <div class="container">
       <div *ngFor="let item of jogadores;let i = index;" class="row">
         <div class="col-4">
