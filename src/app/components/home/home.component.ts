@@ -1,4 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Jogador } from 'src/app/interfaces/jogador';
+import { Jogo } from 'src/app/interfaces/jogo';
+import { Liga } from 'src/app/interfaces/liga';
+import { JogadorService } from 'src/app/jogador.service';
+import { JogoService } from 'src/app/jogo.service';
+import { LigaService } from 'src/app/liga.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +14,27 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class HomeComponent implements OnInit {
   @Input() loginUser!: string;
   @Input() idUser!: number;
-  @Input() jogos!: any[];
-  @Input() ligas!: any[];
-  @Input() jogadores!: any[];
+  jogos!: any[];
+  ligas!: any[];
+  jogadores!: any[];
   totalJogos: number = 0;
   jogosRanking: any[] = [];
+  error = '';
+  success = '';
   @Input() hasLeftHome = false;
   @Output() hasLeftHomeChange = new EventEmitter<boolean>();
   @Input() hasEnteredLiga = false;
   @Output() hasEnteredLigaChange = new EventEmitter<boolean>();
 
+    constructor(private jogoService: JogoService, 
+              private ligaService: LigaService, 
+              private jogadorService: JogadorService) { }
+
   ngOnInit() {
+    this.getJogos();
+    this.getLigas();
+    this.getJogadores();
+
     this.jogos.sort((a: any, b: any) => {
       return b.pontos - a.pontos;
     });
@@ -55,5 +71,44 @@ export class HomeComponent implements OnInit {
   enterLiga() {
     this.hasEnteredLiga = true;
     this.hasEnteredLigaChange.emit(this.hasEnteredLiga);
+  }
+
+  getJogos(): void {
+    this.jogoService.getAll().subscribe(
+      (data: Jogo[]) => {
+        this.jogos = data;
+        this.success = 'succesful retrieval of the list';
+      },
+      (err) => {
+        console.log(err);
+        this.error = err;
+      }
+    )
+  }
+
+  getJogadores(): void {
+    this.jogadorService.getAll().subscribe(
+      (data: Jogador[]) => {
+        this.jogadores = data;
+        this.success = 'succesful retrieval of the list';
+      },
+      (err) => {
+        console.log(err);
+        this.error = err;
+      }
+    )
+  }
+
+  getLigas(): void {
+    this.ligaService.getAll().subscribe(
+      (data: Liga[]) => {
+        this.ligas = data;
+        this.success = 'succesful retrieval of the list';
+      },
+      (err) => {
+        console.log(err);
+        this.error = err;
+      }
+    )
   }
 }
