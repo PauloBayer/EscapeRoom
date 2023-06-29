@@ -104,9 +104,45 @@
   border: 3px dashed #2B1800;
 }
 .classification{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  position: relative;
   width: 95%;
   height: 97%;
   text-align: center;
   border-radius: 20px;
   border: 1px solid #2B1800;
+  overflow-y:auto;
+}
+.classification::-webkit-scrollbar {
+  width: 6px;               /* width of the entire scrollbar */
+}
+
+.classification::-webkit-scrollbar-track {
+  background: o;        /* color of the tracking area */
+}
+
+.classification::-webkit-scrollbar-thumb {
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #2b180071;  /* creates padding around scroll thumb */
+}
+
+.points{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  width: 95%;
+  height: 8%;
+  margin-top: 2%;
+
+  border: none;
+  border-radius: 5px;
+}
+.points p{
+  margin: 0;
+}
+.points p:nth-child(1){
+
 }
