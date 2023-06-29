@@ -1,0 +1,23 @@
+<div class="container-home">
+  <h1>Bem vindo</h1>
+  <div class="main-form">
+    <div class="menu">
+      <div class="btn-home">
+        <a href="#">escolher Liga</a>
+      </div>
+      <div class="btn-home">
+        <a href="#">Iniciar jogo</a>
+      </div>
+    </div>
+    <div class="box-classification">
+      <div class="decoration">
+        <div class="classification" id="rankGeral">
+          <div *ngfor="let user of users" class="points">
+            <p>Nome do jogador</p>
+            <p>10:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

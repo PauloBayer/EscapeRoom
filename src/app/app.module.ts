@@ -25,6 +25,7 @@ import { GameoverComponent } from './components/gameover/gameover.component';
 import { FormComponent } from './components/form/form.component';
 import { CutsceneIntroComponent } from './components/cutscene-intro/cutscene-intro.component';
 import { HomeComponent } from './components/home/home.component';
+import { LigasComponent } from './components/ligas/ligas.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HomeComponent } from './components/home/home.component';
     FormComponent,
     CutsceneIntroComponent,
     HomeComponent,
+    LigasComponent,
   ],
   imports: [
     BrowserModule,
