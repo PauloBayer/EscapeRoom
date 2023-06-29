@@ -1,23 +1,49 @@
 <div class="container-home">
-  <h1>Bem vindo</h1>
+  <div class="header">
+    <mat-icon class="arrow">arrow_back_ios</mat-icon>
+    <h1>Seção de ligas</h1>
+  </div>
   <div class="main-form">
-    <div class="menu">
-      <div class="btn-home">
-        <a href="#">escolher Liga</a>
+    <div class="container-ligas">
+      <div class="ligas">
+        <div class="liga">
+          <p>Nome da liga</p>
+          <p>#1</p>
+        </div>
       </div>
-      <div class="btn-home">
-        <a href="#">Iniciar jogo</a>
+      <div class="button-ligas">
+        <button>Entrar na liga</button>
+        <button>Criar liga</button>
       </div>
     </div>
-    <div class="box-classification">
-      <div class="decoration">
-        <div class="classification" id="rankGeral">
-          <div *ngfor="let user of users" class="points">
-            <p>Nome do jogador</p>
-            <p>10:00</p>
+    <div class="score-boarder">
+      <div class="score-boarder__title">
+        <p>Classificação nas ligas</p>
+      </div>
+      <div class="box-classification">
+        <div class="decoration">
+          <div class="classification" id="rankGeral">
+            <div class="points">
+              <p>Nome do jogador</p>
+              <p>10:00</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="score-boarder">
+      <div class="score-boarder__title">
+        <p>Seu historico</p>
+      </div>
+      <div class="box-classification">
+        <div class="decoration">
+          <div class="classification" id="rankGeral">
+            <div class="points">
+              <p>Nome do jogador</p>
+              <p>10:00</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
