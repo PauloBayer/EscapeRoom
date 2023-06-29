@@ -1,20 +1,21 @@
 <div class="container-home">
-  <h1>Bem vindo {{loginUser}}</h1>
+  <h1>Bem-vind@ {{loginUser}}!</h1>
+  <h1>Você tem um total de {{totalJogos}} jogos</h1>
   <div class="main-form">
     <div class="menu">
       <div class="btn-home">
-        <a href="#">escolher Liga</a>
+        <a href="#" (click)="enterLiga()">Escolher Liga</a>
       </div>
       <div class="btn-home">
-        <a href="#">Iniciar jogo</a>
+        <a href="#" (click)="letsStart()">Iniciar Jogo</a>
       </div>
     </div>
     <div class="box-classification">
       <div class="decoration">
         <div class="classification" id="rankGeral">
-          <div class="points">
-            <p>Nome do jogador</p>
-            <p>10:00</p>
+          <div class="points" *ngFor="let jogo of jogosRanking">
+            <p>{{jogo.posicao}} - {{jogo.nome}}</p>
+            <p>{{jogo.pontos}} pontos</p>
           </div>
         </div>
       </div>

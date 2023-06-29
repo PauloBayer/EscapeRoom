@@ -30,6 +30,8 @@ export class AppComponent implements OnInit {
   cutsceneOver = false;
   timeLeft = 1802;
   gameIsComplete = false;
+  hasLeftHome = false;
+  hasEnteredLiga = false;
 
   constructor(private jogoService: JogoService, 
               private ligaService: LigaService, 
