@@ -1,11 +1,12 @@
 <app-form *ngIf="!hasLoggedIn" [(loggedIn)]="hasLoggedIn" [(loginUser)]="loginUser" [(idUser)]="idUser"></app-form>
-<app-home *ngIf="hasLoggedIn"></app-home>
-<!--
-<app-ligas></app-ligas>
-<app-end-sceen></app-end-sceen>-->
-<app-cutscene-intro *ngIf="hasLoggedIn && !cutsceneOver" [(cutsceneOver)]="cutsceneOver"></app-cutscene-intro>
-<app-background-game *ngIf="cutsceneOver" [loginUser]="loginUser"></app-background-game>
-
+<app-home *ngIf="hasLoggedIn && !hasLeftHome && !hasEnteredLiga" [loginUser]="loginUser" [idUser]="idUser"
+  [(hasLeftHome)]="hasLeftHome" [(hasEnteredLiga)]="hasEnteredLiga"></app-home>
+<!-- <app-ligas [loginUser]="loginUser" [(hasLeftHome)]="hasLeftHome" [(hasEnteredLiga)]="hasEnteredLiga"></app-ligas> -->
+<app-cutscene-intro *ngIf="!cutsceneOver && hasLeftHome" [(cutsceneOver)]="cutsceneOver"></app-cutscene-intro>
+<app-background-game *ngIf="cutsceneOver && !gameIsComplete" [(gameIsComplete)]="gameIsComplete"
+  [(timeLeft)]="timeLeft" [loginUser]="loginUser"></app-background-game>
+<app-cutscene-end *ngIf="gameIsComplete" [jogadores]="jogadores" [jogos]="jogos"
+  [ligas]="ligas" [timeLeft]="timeLeft" [idJogador]="idUser"></app-cutscene-end>
 
 <!-- <div *ngIf="error">ERRO: {{ error | json}}</div>
 <div *ngIf="success">SUCESSO: {{ success | json }}</div>

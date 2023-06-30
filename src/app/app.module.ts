@@ -26,6 +26,7 @@ import { FormComponent } from './components/form/form.component';
 import { CutsceneIntroComponent } from './components/cutscene-intro/cutscene-intro.component';
 import { HomeComponent } from './components/home/home.component';
 import { LigasComponent } from './components/ligas/ligas.component';
+import { CutsceneEndComponent } from './components/cutscene-end/cutscene-end.component';
 import { EndSceenComponent } from './components/end-sceen/end-sceen.component';
 
 @NgModule({
@@ -46,6 +47,7 @@ import { EndSceenComponent } from './components/end-sceen/end-sceen.component';
     CutsceneIntroComponent,
     HomeComponent,
     LigasComponent,
+    CutsceneEndComponent,
     EndSceenComponent,
   ],
   imports: [
