@@ -1,1 +1,41 @@
-<p>end-sceen works!</p>
+<div class="container-home">
+  <div class="header">
+    <mat-icon class="arrow">arrow_back_ios</mat-icon>
+    <div class="starting-points">
+      <h1>Sua pontuação</h1>
+      <p>10:40</p>
+    </div>
+  </div>
+  <div class="main-form">
+    <div class="score-boarder">
+      <div class="score-boarder__title">
+        <p>Classificação nas ligas</p>
+      </div>
+      <div class="box-classification">
+        <div class="decoration">
+          <div class="classification" id="rankGeral">
+            <div class="points">
+              <p>Nome do jogador</p>
+              <p>10:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="score-boarder">
+      <div class="score-boarder__title">
+        <p>Classificação geral</p>
+      </div>
+      <div class="box-classification">
+        <div class="decoration">
+          <div class="classification" id="rankGeral">
+            <div class="points">
+              <p>Nome do jogador</p>
+              <p>10:00</p>
+            </div>
+            <p *ngFor ="let i for num">alo{{i}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+p{
+  margin: 0;
+}
+.header{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.starting-points{
+  position: relative;
+  width: 20%;
+  right: 45%;
+  text-align: center;
+}
+.header h1{
+  color: #ffffff;
+}
+.header p{
+  color: #ffffff;
+}
+.arrow{
+  color: #ffffff;
+  left: 50%;
+  cursor:pointer;
+}
+.container-home{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: url(../../../assets/scenarios/policia.jpg) no-repeat;
+  background-size: cover;
+}
+
+.main-form{
+  display: flex;
+  height: 80%;
+  width: 90%;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+/*classificação*/
+.score-boarder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  height: 90%;
+}
+.score-boarder__title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ffffff;
+  height: 8%;
+  width: 60%;
+  left: 55%;
+  border-radius: 7px 7px 0 0;
+}
+.score-boarder__title p{
+  font-size:medium;
+}
+.box-classification{
+  display: flex;
+  width: 100%;
+  height: 90%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2B1800;
+  border-radius: 20px;
+  background-color: #7e3f03;
+}
+.decoration{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  height: 97%;
+  text-align: center;
+  border-radius: 20px;
+  border: 3px dashed #2B1800;
+}
+.classification{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  position: relative;
+  width: 95%;
+  height: 97%;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid #2B1800;
+  overflow-y:auto;
+}
+.classification::-webkit-scrollbar {
+  width: 6px;               /* width of the entire scrollbar */
+}
+
+.classification::-webkit-scrollbar-track {
+  background: o;        /* color of the tracking area */
+}
+
+.classification::-webkit-scrollbar-thumb {
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid #2b180071;  /* creates padding around scroll thumb */
+}
+
+.points{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  width: 95%;
+  height: 8%;
+  margin-top: 2%;
+}
+.points{
+  border: none;
+  border-radius: 5px;
+}
+.points p{
+  margin: 0;
+}

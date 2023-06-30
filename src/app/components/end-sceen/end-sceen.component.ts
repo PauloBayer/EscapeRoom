@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./end-sceen.component.css']
 })
 export class EndSceenComponent {
-
+ num=[1,2,3]
 }
