@@ -1,88 +1,44 @@
 p{
   margin: 0;
 }
+.header{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+.starting-points{
+  position: relative;
+  width: 20%;
+  right: 45%;
+  text-align: center;
+}
+.header h1{
+  color: #ffffff;
+}
+.header p{
+  color: #ffffff;
+}
+.arrow{
+  color: #ffffff;
+  left: 50%;
+  cursor:pointer;
+}
 .container-home{
   display: flex;
   flex-direction: column;
   height: 100%;
   align-items: center;
   justify-content: center;
-  background-image: url(../../../assets/scenarios/background-home.png);
-  background-size: contain;
+  background: url(../../../assets/scenarios/policia.jpg) no-repeat;
+  background-size: cover;
 }
-.container-home h1{
-  color: #ffffff;
-}
+
 .main-form{
   display: flex;
   height: 80%;
   width: 90%;
   align-items: flex-end;
   justify-content: space-evenly;
-}
-.menu{
-  display: flex;
-  flex-direction: column;
-  justify-content:space-around;
-  align-items: center;
-  height:90%;
-  width: 60%;
-}
-
-.btn-home{
-  position:relative;
-  display:inline-block;
-  margin:20px;
-  width: 50%;
-}
-
-.btn-home a{
-  color:white;
-  font-family:Helvetica, sans-serif;
-  font-weight:bold;
-  font-size:36px;
-  text-align: center;
-  text-decoration:none;
-  background-color:#42850c;
-  display:block;
-  position:relative;
-  padding:20px 40px;
-
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  text-shadow: 0px 1px 0px #000;
-  filter: dropshadow(color=#000, offx=0px, offy=1px);
-
-  -webkit-box-shadow:inset 0 1px 0 #50a00e, 0 10px 0 #2f5e09;
-  -moz-box-shadow:inset 0 1px 0 #50a00e, 0 10px 0 #2f5e09;
-  box-shadow:inset 0 1px 0 #50a00e, 0 10px 0 #2f5e09;
-
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
-.btn-home a:active{
-  top:10px;
-  background-color:#2f5e09;
-
-  -webkit-box-shadow:inset 0 1px 0 #50a00e, inset 0 -3px 0 #2f5e09;
-  -moz-box-shadow:inset 0 1px 0 #50a00e, inset 0 -3pxpx 0 #2f5e09;
-  box-shadow:inset 0 1px 0 #50a00e, inset 0 -3px 0 #2f5e09;
-}
-
-.btn-home:after{
-  content:"";
-  height:100%;
-  width:100%;
-  padding:4px;
-  position: absolute;
-  bottom:-15px;
-  left:-4px;
-  z-index:-1;
-  background-color:#2B1800;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
 }
 /*classificação*/
 .score-boarder{
@@ -152,7 +108,6 @@ p{
   border: 3px solid #2b180071;  /* creates padding around scroll thumb */
 }
 
-
 .points{
   display: flex;
   justify-content: space-around;
@@ -161,13 +116,11 @@ p{
   width: 95%;
   height: 8%;
   margin-top: 2%;
-
+}
+.points{
   border: none;
   border-radius: 5px;
 }
 .points p{
   margin: 0;
-}
-.points p:nth-child(1){
-
 }
