@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CountdownEvent } from 'ngx-countdown';
 import { ItemModalComponent } from '../item-modal/item-modal.component';
@@ -51,7 +51,10 @@ export class BackgroundGameComponent implements OnInit {
   evidence5 = false;
   evidence6 = false;
   allEvidences = false;
-  timeLeft: number = 1802;
+  @Input() gameIsComplete = false;
+  @Output() gameIsCompleteChange = new EventEmitter<boolean>;
+  @Input() timeLeft: number = 1802;
+  @Output() timeLeftChange = new EventEmitter<any>();
   runTime: any;
   @Input() loginUser!: string;
 
@@ -757,9 +760,12 @@ export class BackgroundGameComponent implements OnInit {
         this.vipLocked = false;
       }
 
-      if (this.password == 'vitae') {
-        this.exitLocked = false;
+      if (this.password == 'vitae' && this.allEvidences) {
+        this.gameIsComplete = true;
+        this.timeLeftChange.emit(this.timeLeft);
+        this.gameIsCompleteChange.emit(this.gameIsComplete)
       }
+
     });
     return dialogRef;
   }

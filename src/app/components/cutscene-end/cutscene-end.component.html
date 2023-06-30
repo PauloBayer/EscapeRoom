@@ -1,0 +1,12 @@
+<button *ngIf="!cutsceneEnded" mat-fab color="primary" 
+aria-label="Example icon button with a delete icon" 
+(click)="nextCutscene()">
+    <mat-icon>navigate_next</mat-icon>
+</button>
+<div class="w-100 h-100 bg-dark tex-center justify-content-center align-items-center text-white d-flex">
+    <div *ngIf="!cutsceneEnded" class="w-50" [innerHtml]="innerText">
+    </div>
+    <div *ngIf="cutsceneEnded">
+<!-- ADICIONAR AQUI DENTRO DESSA DIV O HTML FINAL -->
+    </div>
+</div>

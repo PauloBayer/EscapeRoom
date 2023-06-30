@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
   
   btnText='Cadastrar';
   aText='Já possui cadastro clique aqui';
-  cadastro=false;
+  cadastro=true;
   senha = '';
   login = '';
   jogadores: Jogador[] = [];
