@@ -27,6 +27,7 @@ import { CutsceneIntroComponent } from './components/cutscene-intro/cutscene-int
 import { HomeComponent } from './components/home/home.component';
 import { LigasComponent } from './components/ligas/ligas.component';
 import { CutsceneEndComponent } from './components/cutscene-end/cutscene-end.component';
+import { EndSceenComponent } from './components/end-sceen/end-sceen.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CutsceneEndComponent } from './components/cutscene-end/cutscene-end.com
     CutsceneIntroComponent,
     HomeComponent,
     LigasComponent,
-    CutsceneEndComponent
+    CutsceneEndComponent,
+    EndSceenComponent,
   ],
   imports: [
     BrowserModule,
