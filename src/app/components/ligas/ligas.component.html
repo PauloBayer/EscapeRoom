@@ -1,31 +1,43 @@
 <div class="container-home">
-  <div class="header">
-    <mat-icon class="arrow">arrow_back_ios</mat-icon>
-    <h1>Seção de ligas</h1>
+  <div class="header text-center">
+    <mat-icon class="arrow" (click)="goBack()">arrow_back_ios</mat-icon>
+    <br>
+    <h1>Você está na liga: <strong>{{leagueName}}</strong></h1>
   </div>
   <div class="main-form">
     <div class="container-ligas">
       <div class="ligas">
-        <div class="liga">
-          <p>Nome da liga</p>
-          <p>#1</p>
+        <div [ngClass]="liga.idLiga == selectedIdLeague ? 'selected' : ''" *ngFor="let liga of ligas; let i = index"
+          class="liga" (click)="mark(liga.idLiga!)">
+          <p>{{i + 1}} - {{liga.nomeLiga}}</p>
+        </div>
+        <div class="liga mt-5 align-self-end">
+          <form #f="ngForm" name="theLiga" (submit)="addLiga(f)" class="example-form w-100">
+            <mat-form-field class="example-full-width w-100">
+              <mat-label>Nome da nova liga</mat-label>
+              <input matInput placeholder="" [(ngModel)]="liga.nomeLiga" class="form-control" name="nomeLiga"
+                required="" pattern="^[a-zA-Z ]+$">
+            </mat-form-field>
+            <button #notClickableBtn type="submit" class="d-none"></button>
+          </form>
+
         </div>
       </div>
       <div class="button-ligas">
-        <button>Entrar na liga</button>
-        <button>Criar liga</button>
+        <button (click)="updatePlayerLeague()">Entrar na liga</button>
+        <button #clickableBtn (click)="clickableBtnClick()">Criar liga</button>
       </div>
     </div>
-    <div class="score-boarder">
+    <div class=" score-boarder">
       <div class="score-boarder__title">
         <p>Classificação nas ligas</p>
       </div>
       <div class="box-classification">
         <div class="decoration">
           <div class="classification" id="rankGeral">
-            <div class="points">
-              <p>Nome do jogador</p>
-              <p>10:00</p>
+            <div class="points" *ngFor="let jogo of jogosDeLiga; let i = index">
+              <p>{{i + 1}} - {{jogo.nome}}</p>
+              <p>{{jogo.pontos}} pontos</p>
             </div>
           </div>
         </div>
@@ -33,17 +45,17 @@
     </div>
     <div class="score-boarder">
       <div class="score-boarder__title">
-        <p>Seu historico</p>
+        <p>Seu histórico</p>
       </div>
       <div class="box-classification">
         <div class="decoration">
           <div class="classification" id="rankGeral">
-            <div class="points">
-              <p>Nome do jogador</p>
-              <p>10:00</p>
+            <div class="points" *ngFor="let jogo of jogosDeJogador">
+              <p>{{jogo.posicao}} - {{jogo.nome}}</p>
+              <p>{{jogo.pontos}} pontos</p>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>

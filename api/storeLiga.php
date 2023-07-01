@@ -17,9 +17,10 @@ if (isset($postdata) && !empty($postdata)) {
 
     // Sanitize
     $nomeLiga = mysqli_real_escape_string($conn, trim($request->data->nomeLiga));
+    $idLiga = mysqli_real_escape_string($conn, trim($request->data->idLiga));
     
     // Store
-    $sql = "INSERT INTO `liga`(`nomeLiga`) VALUES ('{$nomeLiga}')";
+    $sql = "INSERT INTO `liga`(`nomeLiga`, `idLiga`) VALUES ('{$nomeLiga}', '{$idLiga}')";
 
     if (mysqli_query($conn, $sql)) {
         http_response_code(201);

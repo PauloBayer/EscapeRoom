@@ -16,10 +16,11 @@ export class CutsceneEndComponent implements OnInit {
   @Input() ligas?: any;
   @Input() timeLeft?: any;
   @Input() idJogador?: any;
+  @Input() cutsceneEndIsOver: boolean = false;
+  @Output() cutsceneEndIsOverChange = new EventEmitter<boolean>();
   
   idLiga?: any;
   cutscene = 1;
-  cutsceneEnded = false;
   jogo: Jogo = { idJogo: Math.floor(Math.random() * 100000000), idLiga: undefined, idJogador: undefined, pontos: 0 };
   success = '';
   error = '';
@@ -27,7 +28,7 @@ export class CutsceneEndComponent implements OnInit {
   ngOnInit(): void {
 
     for (let i = 0; i < this.jogadores.length; i++) {
-      if (this.jogadores[i] == this.idJogador) {
+      if (this.jogadores[i].idJogador == this.idJogador) {
         this.idLiga = this.jogadores[i].idLiga;
         break;
       }
@@ -64,7 +65,8 @@ export class CutsceneEndComponent implements OnInit {
     }
 
     if (this.cutscene == 4) {
-      this.cutsceneEnded = true;
+      this.cutsceneEndIsOver = true;
+      this.cutsceneEndIsOverChange.emit(this.cutsceneEndIsOver);
     }
   }
   

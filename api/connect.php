@@ -37,13 +37,13 @@
     mysqli_select_db($conn, DB_NAME);
 
     $sql = "CREATE TABLE IF NOT EXISTS `liga` (
-        `idLiga` INT(11) NOT NULL AUTO_INCREMENT,
+        `idLiga` INT(11) NOT NULL,
         `nomeLiga` VARCHAR(45) NOT NULL DEFAULT 'sem-nome',
         PRIMARY KEY (`idLiga`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
     CREATE TABLE IF NOT EXISTS `jogador` (
-        `idJogador` INT(11) NOT NULL AUTO_INCREMENT,
+        `idJogador` INT(11) NOT NULL,
         `login` VARCHAR(45) NOT NULL,
         `senha` VARCHAR(45) NOT NULL,
         `idLiga` INT(11),
@@ -52,7 +52,7 @@
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
     CREATE TABLE IF NOT EXISTS `jogo` (
-        `idJogo` INT(11) NOT NULL AUTO_INCREMENT,
+        `idJogo` INT(11) NOT NULL,
         `idLiga` INT(11),
         `idJogador` INT(11) NOT NULL,
         `pontos` INT(11) NOT NULL DEFAULT '0',

@@ -7,10 +7,13 @@ p{
   justify-content: space-between;
 }
 .starting-points{
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
   position: relative;
   width: 20%;
   right: 45%;
   text-align: center;
+  color: white;
 }
 .header h1{
   color: #ffffff;
@@ -89,7 +92,7 @@ p{
   justify-content: center;
   position: relative;
   width: 95%;
-  height: 97%;
+  align-self: start;
   text-align: center;
   border-radius: 20px;
   border: 1px solid #2B1800;

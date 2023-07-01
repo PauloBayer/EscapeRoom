@@ -32,54 +32,74 @@ export class AppComponent implements OnInit {
   gameIsComplete = false;
   hasLeftHome = false;
   hasEnteredLiga = false;
+  cutsceneEndIsOver = false;
+  leagueId: any;
 
-  constructor(private jogoService: JogoService, 
-              private ligaService: LigaService, 
-              private jogadorService: JogadorService) { }
+  constructor(
+    private jogoService: JogoService,
+    private ligaService: LigaService,
+    private jogadorService: JogadorService
+  ) {}
 
   ngOnInit() {
-    this.getJogos();
-    this.getLigas();
-    this.getJogadores();
+    this.fetchData();
   }
 
+  fetchData() {
+    this.getJogos();
+    this.getJogadores();
+  }
+  
   getJogos(): void {
     this.jogoService.getAll().subscribe(
       (data: Jogo[]) => {
         this.jogos = data;
-        this.success = 'succesful retrieval of the list';
+        this.processData();
+        this.success = 'successful retrieval of the list';
+        this.getLigas(); // Call getLigas() after getting jogos
       },
       (err) => {
         console.log(err);
         this.error = err;
       }
-    )
+    );
   }
-
+  
   getLigas(): void {
     this.ligaService.getAll().subscribe(
       (data: Liga[]) => {
         this.ligas = data;
-        this.success = 'succesful retrieval of the list';
+        this.processData();
+        this.success = 'successful retrieval of the list';
       },
       (err) => {
         console.log(err);
         this.error = err;
       }
-    )
+    );
   }
-
+  
   getJogadores(): void {
     this.jogadorService.getAll().subscribe(
       (data: Jogador[]) => {
         this.jogadores = data;
-        this.success = 'succesful retrieval of the list';
+        this.processData();
+        this.success = 'successful retrieval of the list';
       },
       (err) => {
         console.log(err);
         this.error = err;
       }
-    )
+    );
+  }
+
+  processData(): void {
+    if (this.jogos && this.ligas && this.jogadores) {
+      // Perform the operations that depend on the fetched data here
+      console.log(this.jogos);
+      console.log(this.jogadores);
+      console.log(this.ligas);
+    }
   }
 
   resetAlerts() {
@@ -101,11 +121,12 @@ export class AppComponent implements OnInit {
         // Reset the form
         f.reset();
       },
-        (err) => (this.error = err.message)
+      (err) => (this.error = err.message)
     );
   }
 
   addLiga(f: NgForm) {
+
     this.resetAlerts();
 
     this.ligaService.store(this.liga).subscribe(
@@ -119,7 +140,7 @@ export class AppComponent implements OnInit {
         // Reset the form
         f.reset();
       },
-        (err) => (this.error = err.message)
+      (err) => (this.error = err.message)
     );
   }
 
@@ -137,7 +158,7 @@ export class AppComponent implements OnInit {
         // Reset the form
         f.reset();
       },
-        (err) => (this.error = err.message)
+      (err) => (this.error = err.message)
     );
   }
 
@@ -145,13 +166,12 @@ export class AppComponent implements OnInit {
     this.resetAlerts();
 
     this.jogadorService
-        .update({ idJogador: +idJogador, login: login.value, senha: senha.value, idLiga: idLiga.value })
-        .subscribe(
-          (res) => {
-            this.success = 'Updated successfully';
-          },
-          (err) => (this.error = err)
-        );
-      }
-
+      .update({ idJogador: +idJogador, login: login.value, senha: senha.value, idLiga: idLiga.value })
+      .subscribe(
+        (res) => {
+          this.success = 'Updated successfully';
+        },
+        (err) => (this.error = err)
+      );
+  }
 }

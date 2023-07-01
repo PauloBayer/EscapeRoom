@@ -1,27 +1,28 @@
 <div class="container-home">
   <div class="header">
-    <mat-icon class="arrow">arrow_back_ios</mat-icon>
+    <mat-icon class="arrow" (click)="goHome()">arrow_back_ios</mat-icon>
     <div class="starting-points">
-      <h1>Sua pontuação</h1>
-      <p>10:40</p>
+      <h1><strong>{{loginUser}}</strong></h1>
+      <h3><strong>{{timeLeft}} pontos</strong></h3>
+      <h3><strong>{{leagueName}}</strong></h3>
     </div>
   </div>
   <div class="main-form">
-    <div class="score-boarder">
+    <!-- <div class="score-boarder">
       <div class="score-boarder__title">
-        <p>Classificação nas ligas</p>
+        <p>Classificação na sua liga</p>
       </div>
       <div class="box-classification">
         <div class="decoration">
           <div class="classification" id="rankGeral">
-            <div class="points">
+            <div class="points" *ngFor="let jogo of jogosLiga">
               <p>Nome do jogador</p>
               <p>10:00</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="score-boarder">
       <div class="score-boarder__title">
         <p>Classificação geral</p>
@@ -29,13 +30,12 @@
       <div class="box-classification">
         <div class="decoration">
           <div class="classification" id="rankGeral">
-            <div class="points">
-              <p>Nome do jogador</p>
-              <p>10:00</p>
+            <div class="points" *ngFor="let jogo of jogosGerais; let i = index">
+              <p>{{i + 1}} - {{jogo.nome}}</p>
+              <p>{{jogo.pontos}}</p>
             </div>
-            <p *ngFor ="let i for num">alo{{i}}</p>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>

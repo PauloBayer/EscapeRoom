@@ -18,7 +18,7 @@ if (isset($postdata) && !empty($postdata)) {
     // Sanitize
     $idJogo = mysqli_real_escape_string($conn, trim($request->data->idJogo));
     $idJogador = isset($request->data->idLiga) ? mysqli_real_escape_string($conn, trim($request->data->idJogador)) : 1;
-    $pontos = isset($request->data->idLiga) ? mysqli_real_escape_string($conn, trim($request->data->pontos)) : 0;
+    $pontos = mysqli_real_escape_string($conn, trim($request->data->pontos));
     $idLiga = isset($request->data->idLiga) ? mysqli_real_escape_string($conn, trim($request->data->idLiga)) : 1;
     
     // Store

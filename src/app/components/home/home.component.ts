@@ -26,41 +26,82 @@ export class HomeComponent implements OnInit {
   @Input() hasEnteredLiga = false;
   @Output() hasEnteredLigaChange = new EventEmitter<boolean>();
 
-    constructor(private jogoService: JogoService, 
-              private ligaService: LigaService, 
-              private jogadorService: JogadorService) { }
+  constructor(
+    private jogoService: JogoService,
+    private ligaService: LigaService,
+    private jogadorService: JogadorService
+  ) {}
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
     this.getJogos();
     this.getLigas();
-    this.getJogadores();
+    if (!this.jogadores) {
+      this.getJogadores();
+    } else {
+      this.processJogosData();
+    }
+  }
 
-    this.jogos.sort((a: any, b: any) => {
-      return b.pontos - a.pontos;
-    });
+  getJogos(): void {
+    this.jogoService.getAll().subscribe(
+      (response) => {
+        this.jogos = response;
+        this.processJogosData();
+      }
+    );
+  }
 
-    for (let i = 0; i < this.jogos.length; i++) {
-      // Aumentar variável totalJogos de acordo com id do jogador
-      if (this.jogos[i].idJogador == this.idUser) {
-        this.totalJogos++;
+  getJogadores(): void {
+    this.jogadorService.getAll().subscribe(
+      (response) => {
+        this.jogadores = response;
+        this.processJogosData();
+      }
+    );
+  }
+
+  getLigas(): void {
+    this.ligaService.getAll().subscribe(
+      (response) => {
+        this.ligas = response;
+        this.processJogosData();
+      }
+    );
+  }
+
+  processJogosData(): void {
+    if (this.jogos && this.jogadores) {
+      this.jogos.sort((a: any, b: any) => {
+        return b.pontos - a.pontos;
+      });
+
+      for (let i = 0; i < this.jogos.length; i++) {
+        // Aumentar variável totalJogos de acordo com id do jogador
+        if (this.jogos[i].idJogador == this.idUser) {
+          this.totalJogos++;
+        }
+
+        let jogoUnico = {
+          posicao: 0,
+          nome: '',
+          pontos: 0
+        };
+
+        let idJogador = this.jogos[i].idJogador;
+        let nomeJogador = this.jogadores.find((jogador: any) => jogador.idJogador == idJogador).login;
+
+        jogoUnico.posicao = i + 1;
+        jogoUnico.nome = nomeJogador;
+        jogoUnico.pontos = this.jogos[i].pontos;
+        this.jogosRanking.push(jogoUnico);
       }
 
-      let jogoUnico = {
-        posicao: 0,
-        nome: "",
-        pontos: 0
-      };
-
-      let idJogador = this.jogos[i].idJogador;
-      let nomeJogador = this.jogadores.find((jogador: any) => jogador.idJogador == idJogador).login;
-
-      jogoUnico.posicao = i + 1;
-      jogoUnico.nome = nomeJogador;
-      jogoUnico.pontos = this.jogos[i].pontos;
-      this.jogosRanking.push(jogoUnico);
+      console.log(this.jogosRanking);
     }
-
-    console.log(this.jogosRanking);
   }
 
   letsStart() {
@@ -71,44 +112,5 @@ export class HomeComponent implements OnInit {
   enterLiga() {
     this.hasEnteredLiga = true;
     this.hasEnteredLigaChange.emit(this.hasEnteredLiga);
-  }
-
-  getJogos(): void {
-    this.jogoService.getAll().subscribe(
-      (data: Jogo[]) => {
-        this.jogos = data;
-        this.success = 'succesful retrieval of the list';
-      },
-      (err) => {
-        console.log(err);
-        this.error = err;
-      }
-    )
-  }
-
-  getJogadores(): void {
-    this.jogadorService.getAll().subscribe(
-      (data: Jogador[]) => {
-        this.jogadores = data;
-        this.success = 'succesful retrieval of the list';
-      },
-      (err) => {
-        console.log(err);
-        this.error = err;
-      }
-    )
-  }
-
-  getLigas(): void {
-    this.ligaService.getAll().subscribe(
-      (data: Liga[]) => {
-        this.ligas = data;
-        this.success = 'succesful retrieval of the list';
-      },
-      (err) => {
-        console.log(err);
-        this.error = err;
-      }
-    )
   }
 }
