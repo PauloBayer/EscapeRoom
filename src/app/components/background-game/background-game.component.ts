@@ -87,8 +87,6 @@ export class BackgroundGameComponent implements OnInit {
     'toalhas',
     'faca',
     'facas',
-    'balcão',
-    'balcões',
     'roupa',
     'roupas',
     'lixo',
@@ -100,21 +98,11 @@ export class BackgroundGameComponent implements OnInit {
     'papéis',
     'caderno',
     'cadernos',
-    'baú',
-    'baús',
-    'bau',
-    'baus',
-    'prateleira',
-    'prateleiras',
     'frasco',
     'frascos',
     'varal',
-    'cesta',
-    'caixa',
-    'caixas',
-    'cestas',
-    'janela',
-    'janelas',
+    'ventilação',
+    'ventuinha',
     'câmera',
     'camera',
     'cameras',
@@ -127,8 +115,6 @@ export class BackgroundGameComponent implements OnInit {
     'estátuas',
     'estatua',
     'estatuas',
-    'estatueta',
-    'estatuetas',
     'vaso',
     'plantas',
     'planta',
@@ -429,9 +415,9 @@ export class BackgroundGameComponent implements OnInit {
       if (item == 'quadro' || item == 'quadros') {
         let modalText: modalText = {
           dialogTitle: 'Quadro',
-          imgUrl: '../assets/itens/quadro.png',
+          imgUrl: '../assets/itens/narciso.png',
           dialogInnerText: `
-          Pendurado na parede, está o quadro <em>"Metamorfose de Narciso"</em>.
+          Pendurado na parede, está o quadro... <em>"Metamorfose de Narciso"</em>.
           <br>Provavelmente uma réplica de Salvador Dalí.
           <br>É o único quadro pendurado nessa sala, no ateliê de um pintor.
           <br>Abaixo, está uma anotação colada à parede:
@@ -595,27 +581,13 @@ export class BackgroundGameComponent implements OnInit {
         this.openDialog(modalText);
       }
 
-      if (item == 'cesta' || item == 'caixa' || item == 'caixas') {
+      if (item == 'ventuinha' || item == 'ventilação') {
         let modalText: modalText = {
-          dialogTitle: 'Cesta',
+          dialogTitle: 'Ventuinha',
           dialogInnerText: `
           Jogados juntos, há 8 celulares amontoados, todos deslizados - talvez, sem bateria.
           <br>Um número estranho para uma única pessoa possuir.
           <br>Tudo indica que podem ser das vítimas.
-          `,
-          hasInput: false,
-        };
-        this.openDialog(modalText);
-      }
-
-      if (item == 'janela' || item == 'janelas') {
-        let modalText: modalText = {
-          dialogTitle: 'Frasco',
-          dialogInnerText: `
-          Uma janela para ventilação comum.
-          <br>Porém, essa foi fechada definitivamente.
-          <br>O batente está fechado de tal forma que não é mais possível abri-lo sem quebrá-lo.
-          <br>Será que o pintor não gostaria que pessoas de fora pudessem ver seu trabalho?
           `,
           hasInput: false,
         };
@@ -638,7 +610,7 @@ export class BackgroundGameComponent implements OnInit {
         let modalText: modalText = {
           dialogTitle: 'Cadeira',
           dialogInnerText: `
-          Uma cadeira virada dentro da sala. Parece robusta, muito difícil de ser quebrada.
+          Uma cadeira reforçada, muito difícil de ser quebrada.
           `,
           hasInput: false,
         };
